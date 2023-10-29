@@ -10,10 +10,6 @@ from . models import User
 from . serializers import MyTokenObtainPairSerializer, MyUserSerializer
 
 
-class MyTokenObtainPairSerializer(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
-
-
 @api_view(['POST'])
 def register(request):
     data = request.data
@@ -24,3 +20,7 @@ def register(request):
     )
     serializer = MyUserSerializer(user, many=False)
     return Response(serializer.data)
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
